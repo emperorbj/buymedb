@@ -1,0 +1,3 @@
+mongodb backend cluster passeord connect : AEUmQP9AMX3kW9jm
+
+connection to node js :mongodb+srv://cwaku96:AEUmQP9AMX3kW9jm@backenddb.1vaa7.mongodb.net/?retryWrites=true&w=majority&appName=backenddb
