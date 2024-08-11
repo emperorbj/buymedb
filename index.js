@@ -1,7 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const cors = require('cors')
 const app = express()
-
+app.use(express.json())
+app.use(cors())
 // CONNECTION WITH MONGODB
 mongoose.connect("mongodb+srv://cwaku96:AEUmQP9AMX3kW9jm@backenddb.1vaa7.mongodb.net/free-api?retryWrites=true&w=majority&appName=backenddb")
 .then(() => {
