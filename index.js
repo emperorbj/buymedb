@@ -23,14 +23,58 @@ app.get('/', (req,res) => {
     res.send('testing api');
 })
 
-app.post('/products', async (req,res) => {
-    console.log("Incoming POST request to /products with body:", req.body);
+// Get all products
+app.get('/api/products', async (req,res) => {
+    try{
+        const products = await Product.find({})
+        res.status(200).json(products)
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+})
+
+// get a single product
+app.get('/api/product/:id', async (req,res) =>{
+    try{
+        const id = req.params.id
+        console.log(id);
+        const product = await Product.findById(id)
+        res.status(200).json(product)
+        
+    }
+    catch(error) {
+        res.status(500).json({message: error.message})
+    }
+})
+
+
+// post products
+app.post('/api/products', async (req,res) => {
+    // console.log(req.body);
     try{
         const product = await Product.create(req.body)
         res.status(200).json(product);
     }
     catch(error){
         console.error("Error creating product:", error); 
+        res.status(500).json({message: error.message})
+    }
+})
+
+app.put('/api/product/:id', async (req,res) => {
+    try{
+        const id = req.params.id
+        const product = await Product.findByIdAndUpdate(id, req.body)
+
+        if(!product){
+            return res.status(404).json({message: "Product not found"})
+        }
+
+        const updatedProduct = await Product.findById(id)
+        res.status(200).json(updatedProduct)
+    }
+    catch(error){
         res.status(500).json({message: error.message})
     }
 })
