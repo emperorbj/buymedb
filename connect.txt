@@ -1,5 +1,0 @@
-mongodb backend cluster passeord connect : AEUmQP9AMX3kW9jm
-
-mongodb+srv://cwaku96:AEUmQP9AMX3kW9jm@cluster0.gtmrwxr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
-connection to node js :mongodb+srv://cwaku96:AEUmQP9AMX3kW9jm@backenddb.1vaa7.mongodb.net/?retryWrites=true&w=majority&appName=backenddb
