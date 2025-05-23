@@ -1,8 +1,11 @@
 import express from 'express';
-import { 
-    addProducts,
+ import { 
+     addProducts,
     getAllProducts,
-    getSingleProduct,deleteProduct,updateProduct } from '../controller/productController.js';
+     getSingleProduct,
+deleteProduct,
+ updateProduct 
+} from '../controller/productController.js';
 
 import { verifyToken } from '../middlewares/verifyToken.js';
 

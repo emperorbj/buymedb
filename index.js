@@ -8,7 +8,6 @@ import {errorHandleMiddleware} from './middlewares/errorHandleMiddleware.js'
 import { connectDB } from './config/configDB.js';
 import productRoute from './routes/product.route.js'
 import authRoute from './routes/auth.route.js'
-import cookieParser from 'cookie-parser';
 const app = express()
 
 // middlewares
@@ -16,8 +15,6 @@ dotenv.config()
 app.use(express.json())
 app.use(cors())
 const PORT = process.env.PORT || 5000
-
-app.use(cookieParser())
 
 
 // routes

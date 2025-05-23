@@ -33,9 +33,9 @@ export const register = async (request,response)=>{
 
 	await user.save()
 
-	generateToken(user._id)
+	const token = generateToken(user._id)
 
-  	return response.status(StatusCodes.CREATED).json({success:true,message:"user registered successfully"})
+  	return response.status(StatusCodes.CREATED).json({success:true,message:"user registered successfully",token,user:user})
   }catch(error){
   	return response.status(500).json({message:"something went wrong",error:error.message}) 
   }
@@ -62,9 +62,9 @@ try{
 		return response.status(400).json({message:"password is invalid"})
 	  }
   
-  generateToken(user._id)
+  const token = generateToken(user._id)
   await user.save()
-  return response.status(200).json({success:true,message:"successfully logged in"})
+  return response.status(200).json({success:true,message:"successfully logged in",token,user:user})
 }catch(error){
 	return response.status(500).json({success:false,message:error.message})
 }
