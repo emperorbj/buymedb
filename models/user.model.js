@@ -1,19 +1,46 @@
-import mongoose from "mongoose";
+import mongoose from mongoose
 
 const UserSchema = new mongoose.Schema({
-	name:{
-  type:String,
-  required:[true,"please enter your name"]
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true,
   },
-  email:{
-  type:String,
-  required:[true,"please enter your email"],
-  unique:true
+  password: {
+    type: String,
+    required: true,
+    minlength: 6,
   },
-  password:{
-	type:String,
-  required:[true,"please enter your password"]
-  }
-},{timestamps:true})
-
+  role: {
+    type: String,
+    enum: ['buyer', 'seller'],
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+    phone: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  address: {
+    type: String,
+    required: true,
+  },
+  coordinates: {
+    type: {
+      lat: Number,
+      lng: Number,
+    },
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+})
 export const User = mongoose.model("User",UserSchema)

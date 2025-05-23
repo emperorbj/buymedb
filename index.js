@@ -8,7 +8,6 @@ import {errorHandleMiddleware} from './middlewares/errorHandleMiddleware.js'
 import { connectDB } from './config/configDB.js';
 import productRoute from './routes/product.route.js'
 import authRoute from './routes/auth.route.js'
-import jobRoute from './routes/job.route.js'
 import cookieParser from 'cookie-parser';
 const app = express()
 
@@ -24,7 +23,6 @@ app.use(cookieParser())
 // routes
 app.use('/api/products', productRoute);
 app.use('/api/auth', authRoute);
-app.use('/api/jobs', jobRoute);
 
 
 app.use(notFound)

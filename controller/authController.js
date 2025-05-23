@@ -8,9 +8,9 @@ import { generateToken } from "../lib/getToken.js"
 
 
 export const register = async (request,response)=>{
-	const {name,email,password} = request.body;
+	const {email,password,role,name,phone,address} = request.body;
   try{
-  	if(!name || !email || !password){
+  	if(!email || !password || !name || !role || !phone || !address){
 		return response.status(StatusCodes.NO_CONTENT).json({message:"all fields are required"})
     }
 
@@ -23,14 +23,17 @@ export const register = async (request,response)=>{
 	const hashedPassword = await bcrypt.hash(password,10)
 
 	const user = new User({
-		name,
 		email,
-		password:hashedPassword
+		password:hashedPassword,
+		name,
+		role,
+		phone,
+		address
 	})
 
 	await user.save()
 
-	generateToken(response,user._id)
+	generateToken(user._id)
 
   	return response.status(StatusCodes.CREATED).json({success:true,message:"user registered successfully"})
   }catch(error){
@@ -59,7 +62,7 @@ try{
 		return response.status(400).json({message:"password is invalid"})
 	  }
   
-  generateToken(response,user._id)
+  generateToken(user._id)
   await user.save()
   return response.status(200).json({success:true,message:"successfully logged in"})
 }catch(error){
