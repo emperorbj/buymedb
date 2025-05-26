@@ -14,7 +14,7 @@ name: {
   category: {
     type: String,
     required: true,
-    enum: ["clothing", "jewelry", "home", "food", "other"],
+    enum: ["clothing", "jewelry", "food", "other"],
   },
    image:{
     type:String,

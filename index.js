@@ -8,6 +8,7 @@ import {errorHandleMiddleware} from './middlewares/errorHandleMiddleware.js'
 import { connectDB } from './config/configDB.js';
 import productRoute from './routes/product.route.js'
 import authRoute from './routes/auth.route.js'
+import cartRoute from './routes/cart.route.js'
 const app = express()
 
 // middlewares
@@ -20,7 +21,7 @@ const PORT = process.env.PORT || 5000
 // routes
 app.use('/api/products', productRoute);
 app.use('/api/auth', authRoute);
-
+app.use('/api/cart',cartRoute)
 
 app.use(notFound)
 app.use(errorHandleMiddleware)
